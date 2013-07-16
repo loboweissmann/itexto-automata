@@ -23,6 +23,9 @@ public class Automata {
 	
 	private final Map<String, State> states = new HashMap<String, State>();
 	private State initialState;
+	private final AutomataType type;
+	
+	public AutomataType getType() {return type;}
 	
 	public State process(String input) {
 		State currentState = initialState;
@@ -44,8 +47,8 @@ public class Automata {
 	
 	
 	
-	public Automata() {
-		
+	public Automata(AutomataType type) {
+		this.type = type;
 	}
 
 }

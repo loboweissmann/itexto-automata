@@ -15,14 +15,32 @@
  */
 package br.com.itexto.automata;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class AutomataParser {
 	
 	public Automata parse(InputStream input) {
 		Automata result = null;
 		if (input != null) {
-			result = new Automata();
+			try {
+				BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+				String line = reader.readLine();
+				if (line.trim().equals("text")) {
+					result = new Automata(AutomataType.Text);
+				} else if (line.trim().equals("binary")) {
+					result = new Automata(AutomataType.Binary);
+				} else {
+					throw new RuntimeException("Unknown automata type: " + line);
+				}
+				
+				//TODO: terminar isto (sono bruto bate agora) :)
+				
+			} catch (IOException ex) {
+				
+			}
 		}
 		return result;
 	}

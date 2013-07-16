@@ -22,6 +22,14 @@ public class State {
 	
 	private Set<Transition> transitions = new HashSet<Transition>();
 	
+	public State next(final char _char) {
+		return null;
+	}
+	
+	public State next(final byte _byte) {
+		return null;
+	}
+	
 	public void addTransition(Transition transition) {
 		if (transition != null) {
 			transitions.add(transition);
